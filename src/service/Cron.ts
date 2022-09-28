@@ -25,11 +25,11 @@ export class Cron {
 
   private driverAssignmentCron() {
     new CronJob(
-      '00 08 * * *',
+      '00 01 * * *',
       () => {
         try {
           new DriverAssignment().execute();
-          logger.info('driver assignment completed at 08:00 AM.');
+          logger.info('driver assignment completed at 01:00 AM.');
         } catch (error) {
           logger.error('Error in driver assignment cron', error);
         }
