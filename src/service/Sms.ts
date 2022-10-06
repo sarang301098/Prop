@@ -35,7 +35,7 @@ export class SmsService {
 
   async send({ to, body, mediaUrl }: SmsBody): Promise<unknown> {
     const client = twilio(accountSid, authToken);
-    const smsClient = await this.createClient(to, body, mediaUrl);
+    const smsClient = this.createClient(to, body, mediaUrl);
 
     if (!client && !smsClient) {
       logger.error(`client is not present to send sms.`);

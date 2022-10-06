@@ -73,10 +73,12 @@ export class MailReportService {
 
   async send({ to, text, subject, attachments }: MailBody): Promise<SentMessageInfo> {
     const transport = (await this.createSmtpTransport()) || this.transport;
+
     if (!transport) {
       logger.error(`Transport is not present to send email.`);
       throw new Error(`Transport is not present to send email.`);
     }
+
     return transport.sendMail({
       from: `Propane <${config.GMAIL_USER}>`,
       to,
