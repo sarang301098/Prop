@@ -48,18 +48,6 @@ export const signupValidation = {
     deviceType: Joi.string().optional(),
   }),
 };
-/**
- * Title: SignUp API:
- * Created By: Sarang Patel;
- * steps:
- *    1) Manage find user condition according to the request parameters.
- *    2) Find user based on the conditions and if not found throw an error.
- *    3) After user created save the verifications(mobile + email) for the same user.
- *    4) Create and save user if userType is driver then also create driver_details and save it.
- *    5) Send sms and email for the verifications.
- *    6) Set the JWT tokens to manage the Auth flow.
- *    7) Provide tokens and user data as a response.
- */
 export const signUp = () => async (req: Request, res: Response): Promise<void> => {
   const {
     body: {
@@ -251,16 +239,6 @@ export const loginValidation = {
     deviceType: Joi.string().optional(),
   }),
 };
-/**
- * Title: Login API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Manage find user condition according to the request parameters.
- *    2) Find user based on the given request parameters and select only id and password.
- *    3) If user not found throw an error.
- *    4) Check password and match it with current password if not matched then throw and error.
- *    5) create access and refresh tokens and then send it as a response.
- */
 export const login = () => async (req: Request, res: Response): Promise<void> => {
   const {
     body: { userType, email, password, countryCode, mobileNumber, deviceId, deviceType },
@@ -278,13 +256,6 @@ export const login = () => async (req: Request, res: Response): Promise<void> =>
   ) {
     relations = [...relations, 'token'];
     isSms = true;
-    if (userType === PropaneUserType.VENDOR) {
-      relations = [...relations, 'vendor'];
-    } else if (userType === PropaneUserType.DRIVER) {
-      relations = [...relations, 'driver'];
-    } else if (userType === PropaneUserType.SUB_ADMIN) {
-      relations = [...relations, 'subAdmin'];
-    }
   }
 
   if (isSms) where = { ...where, countryCode, mobileNumber, userType };
@@ -389,36 +360,19 @@ export const login = () => async (req: Request, res: Response): Promise<void> =>
     sameSite: 'strict',
   };
 
-  res
-    .cookie('token', `Bearer ${accessToken}`, cookieOptions)
-    .status(200)
-    .json({
-      token_type: 'bearer',
-      access_token: accessToken,
-      expires_in: expiresIn,
-      refresh_token: refreshToken,
-      is_address: user?.address?.length ? 1 : 0,
-      is_driver_complete_profile: user?.driver?.isDriverProfileComplete(),
-      is_vendor_password_reset: user?.vendor?.isResetPassword,
-    });
+  res.cookie('token', `Bearer ${accessToken}`, cookieOptions).status(200).json({
+    token_type: 'bearer',
+    access_token: accessToken,
+    expires_in: expiresIn,
+    refresh_token: refreshToken,
+  });
 };
 
-/**
- * Refresh token Validation
- */
 export const refreshTokenValidation = {
   body: Joi.object({
     refreshToken: Joi.string().required(),
   }),
 };
-/**
- * Title: Refresh Token API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Decode refreshToken which we get from the request if not found throw an error.
- *    2) If it's successfully ecoaded then find the user data based on the decoded response.
- *    3) Create new access_token from the current refresh_token and create new access_token based on that and that token send as a response.
- */
 export const refreshToken = () => async (req: Request, res: Response): Promise<void> => {
   const {
     body: { refreshToken },
@@ -453,12 +407,7 @@ export const refreshToken = () => async (req: Request, res: Response): Promise<v
   const accessToken = await signAccessToken(user.id);
   const newRefreshToken = await signRefreshToken(user.id);
 
-  if (
-    accessToken &&
-    refreshToken &&
-    newRefreshToken &&
-    user?.userType === (PropaneUserType.USER || PropaneUserType.VENDOR || PropaneUserType.DRIVER)
-  ) {
+  if (accessToken && refreshToken && newRefreshToken) {
     const tokensRepository = getCustomRepository(TokensRepository);
     const token = await tokensRepository.getByUserId(user.id);
 
@@ -495,16 +444,6 @@ export const verifyOtpValidation = {
     mobileNumber: Joi.string().min(0).required(),
   }),
 };
-/**
- * Title: Verify Otp API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Get the verification Details from the mobile, country_code and usertype.
- *    2) Filter that verification based on the type equals 2 (this is the otp verification type check verification model).
- *    3) Check if verification is available or not.
- *    4) Check if otp is matched or not if it isn't then throw an error accordingly.
- *    5) Set a status of 204 as a response.
- */
 export const verifyOtp = () => async (req: Request, res: Response): Promise<void> => {
   const {
     body: { otp, countryCode, mobileNumber, userType },
@@ -546,16 +485,6 @@ export const resendOtpValidation = {
     userType: Joi.string().required(),
   }),
 };
-/**
- * Title: Resend Otp API;
- * Created By: Urvashi;
- * steps:
- *    1) Get the verification Details from the mobile, country_code and usertype.
- *    2) Filter that verification based on the type equals 2 (this is the otp verification type check verification model).
- *    3) Check if verification is available or not.
- *    4) Check if otp is matched or not if it isn't then throw an error accordingly.
- *    5) Set a status of 204 as a response.
- */
 export const resendOtp = () => async (req: Request, res: Response): Promise<void> => {
   const {
     body: { countryCode, mobileNumber, userType },

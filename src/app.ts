@@ -29,6 +29,7 @@ app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: '*' || config.WHITELIST_ORIGINS, credentials: true }));
 app.use(compression());
+
 // TODO: Only apply to long request
 app.use((req, res, next) => {
   res.setTimeout(config.GLOBAL_REQUEST_TIMEOUT_IN_MS, () =>

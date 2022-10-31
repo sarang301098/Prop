@@ -67,20 +67,14 @@ export const getProductTimeSlots = () => async (req: Request, res: Response): Pr
 
   date = momentTimeZone.tz(date, 'America/New_York').format();
 
-  // TODO: Remove all any from the API.
-  // random vendor selectioin.
   const availableVendors = vendorIds as Array<string>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const weekDay = momentTimeZone.tz(date, 'America/New_York').day();
 
   let curr = 0;
   if (availableVendors?.length > 0)
     while (availableVendors?.length > curr) {
-      // check holiday
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const start = momentTimeZone.tz(date, 'America/New_York').startOf('day').format();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const end = momentTimeZone.tz(date, 'America/New_York').endOf('day').format();
 
       const vendorsHoliday = await getManager()

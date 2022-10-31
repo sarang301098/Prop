@@ -63,13 +63,11 @@ export const createRating = () => async (req: Request, res: Response): Promise<v
       orderDetail: orderId,
     },
   });
-
-  if (existingRating) {
+  if (existingRating)
     throw new BadRequestError(
       `Ratings for the order: ${orderId} is already available`,
       'RATING_ALREADY_AVAILABLE',
     );
-  }
 
   let ratings = ratingsRepo.create({
     rating,

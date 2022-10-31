@@ -376,12 +376,6 @@ export const applyPromocode = () => async (req: Request, res: Response): Promise
 export const getPromocodeByIdValidation = {
   params: Joi.object({ id: Joi.number().required() }),
 };
-/**
- * Title: Get Promocode by Id API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Find promocode data based on the Id from the params with all relations.
- */
 export const getById = () => async (req: Request, res: Response): Promise<void> => {
   const {
     params: { id },

@@ -12,7 +12,6 @@ export const userContactUsValidation = {
     message: Joi.string().max(255).required(),
   }),
 };
-
 export const userContactUs = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user,
@@ -59,7 +58,6 @@ export const contactUsListValidation = {
     perPage: Joi.number().integer().min(1).default(10),
   }),
 };
-
 export const contactUsList = () => async (req: Request, res: Response): Promise<void> => {
   const {
     query: { search, page, perPage },
@@ -91,7 +89,6 @@ export const contactUsList = () => async (req: Request, res: Response): Promise<
 export const removeContactUsValidation = {
   params: Joi.object({ id: Joi.number().integer().required() }),
 };
-
 export const removeContactUs = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user: { id: userId },
@@ -114,7 +111,6 @@ export const adminContactUsValidation = {
   }),
   params: Joi.object({ id: Joi.number().min(0).required() }),
 };
-
 export const adminContactUs = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user,

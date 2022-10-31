@@ -46,23 +46,6 @@ export const createUsersCard = () => async (req: Request, res: Response): Promis
 
   const service = new StripeCardsService();
 
-  // TODO: check the card is available or not.
-  // const existingCard = await service.execute({
-  //   object: 'card',
-  //   stripeCustomerId: user?.stripeCustomerId || '',
-  //   action: Actions.LIST,
-  // });
-
-  // const {
-  //   sources: { data: userCards },
-  // } = existingCard;
-
-  // if (existingCard && userCards && userCards.length) {
-  // for (let index = 0; index < userCards.length; index++) {
-
-  // }
-  // }
-
   const result = await service.execute({
     cvc,
     name,

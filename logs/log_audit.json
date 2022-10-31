@@ -1,34 +1,14 @@
 {
-    "keep": {
-        "days": true,
-        "amount": 7
-    },
-    "auditLog": "logs/log_audit.json",
-    "files": [
-        {
-            "date": 1660915197782,
-            "name": "logs/PROPANE-BROS-2022-08-19.log",
-            "hash": "3cd25cd782e34fee997aa8e0e9e5fe11"
-        },
-        {
-            "date": 1660999360224,
-            "name": "logs/PROPANE-BROS-2022-08-20.log",
-            "hash": "5b90dd32b3fa55f5b95fa1049fa97929"
-        },
-        {
-            "date": 1661292207644,
-            "name": "logs/PROPANE-BROS-2022-08-23.log",
-            "hash": "8941ee0345587415aeb13ea000209d73"
-        },
-        {
-            "date": 1661358455072,
-            "name": "logs/PROPANE-BROS-2022-08-24.log",
-            "hash": "146f833eb9e8ad503a07b64440c082aa"
-        },
-        {
-            "date": 1661473622783,
-            "name": "logs/PROPANE-BROS-2022-08-25.log",
-            "hash": "fded5c6a20899b24bd83524ef412472c"
-        }
-    ]
+  "keep": {
+    "days": true,
+    "amount": 7
+  },
+  "auditLog": "logs/log_audit.json",
+  "files": [
+    {
+      "date": 1667241821669,
+      "name": "logs/PROPANE-BROS-2022-10-31.log",
+      "hash": "49e9c3655ac72ba36c0656f8fb764b4c"
+    }
+  ]
 }
