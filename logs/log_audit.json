@@ -7,8 +7,13 @@
   "files": [
     {
       "date": 1667241821669,
-      "name": "logs/PROPANE-BROS-2022-10-31.log",
+      "name": "logs/NODE-DEMO-2022-10-31.log",
       "hash": "49e9c3655ac72ba36c0656f8fb764b4c"
+    },
+    {
+      "date": 1667244442994,
+      "name": "logs/PROPANE-BROS-2022-10-31.log",
+      "hash": "80b24afd9a30abec81ec544337f5694d"
     }
   ]
 }

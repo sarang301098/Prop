@@ -26,7 +26,6 @@ export const createAcoount = () => async (req: Request, res: Response): Promise<
   try {
     const accountDetails = await stripe.oauth.token({
       grant_type: 'authorization_code',
-
       code: code as string,
     });
 
