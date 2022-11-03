@@ -14,6 +14,21 @@
       "date": 1667244442994,
       "name": "logs/PROPANE-BROS-2022-10-31.log",
       "hash": "80b24afd9a30abec81ec544337f5694d"
+    },
+    {
+      "date": 1667339824293,
+      "name": "logs/PROPANE-BROS-2022-11-01.log",
+      "hash": "7c619e0baf8d51ab2b8e19115640b92f"
+    },
+    {
+      "date": 1667366430612,
+      "name": "logs/PROPANE-BROS-2022-11-02.log",
+      "hash": "2729bc627a30694fda445ca474c5970b"
+    },
+    {
+      "date": 1667502345063,
+      "name": "logs/PROPANE-BROS-2022-11-03.log",
+      "hash": "a038b362a5767d2df9b7c30ae16482bf"
     }
   ]
 }
