@@ -19,12 +19,10 @@ export class DriverAssignment {
   public async execute(): Promise<void> {
     try {
       const todaysOrderDetails = await this.getTodaysOrder();
-
       const freelanceDriver = await this.getFreelanceDriver();
 
       for (let i = 0; i < todaysOrderDetails?.length; i++) {
         let vendorsDeriver = await this.getVendorsDriver(todaysOrderDetails[i]?.vendorId);
-
         if (!vendorsDeriver && !vendorsDeriver?.drivers) {
           vendorsDeriver = {
             drivers: [],

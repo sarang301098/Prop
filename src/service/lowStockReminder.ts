@@ -25,7 +25,7 @@ export class LowStockReminder {
     for (let i = 0; i < vendorDetailsReminder.length; i++) {
       for (let j = 0; j <= vendorStockReminder.length; j++) {
         if (
-          vendorDetailsReminder[i].user.id === request?.userId &&
+          vendorDetailsReminder[i]?.user.id === request?.userId &&
           vendorDetailsReminder[i]?.user?.id === vendorStockReminder[j]?.vendor?.user?.id &&
           vendorDetailsReminder[i]?.lowStockReminder >= vendorStockReminder[j]?.remainingStock
         ) {
