@@ -3,7 +3,7 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 import config from '../config';
 
-const baseFolder = config.isProduction ? 'dist' : 'src';
+const baseFolder = config.isProd ? 'dist' : 'src';
 
 const typeormConfig = {
   type: config.MYSQL_CONNECTION,
@@ -13,8 +13,8 @@ const typeormConfig = {
   password: config.MYSQL_PASSWORD,
   database: config.MYSQL_DB,
   namingStrategy: new SnakeNamingStrategy(),
-  logging: true,
-  // synchronize: true, // TODO: Make true on development
+  logging: true, // TODO: Make logging: ['error'] on production
+  synchronize: false, // TODO: Make true on development
   entities: [`${baseFolder}/model/*{.js,.ts}`, `${baseFolder}/model/views/*{.js,.ts}`],
   migrations: [`${baseFolder}/database/migration/**/*{.js,.ts}`],
   subscribers: [`${baseFolder}/database/subscriber/**/*{.js,.ts}`],

@@ -11,7 +11,6 @@ export const contactUsValidation = {
     message: Joi.string().max(255).required(),
   }),
 };
-
 export const contactUs = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user,

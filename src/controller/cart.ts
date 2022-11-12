@@ -50,36 +50,6 @@ export const createCartValidation = {
     vendorId: Joi.string().uuid({ version: 'uuidv4' }).required(),
   }),
 };
-// {
-//   scheduleDate: Joi.date().required(),
-//   qty: Joi.number().integer().min(1).required(),
-//   lekageFee: Joi.when('accessoryId', {
-//     is: Joi.exist(),
-//     then: Joi.forbidden(),
-//     otherwise: Joi.number().min(0).required(),
-//   }),
-//   timeslotId: Joi.number().integer().min(1).required(),
-//   locationId: Joi.number().integer().min(1).required(),
-//   zipcodeId: Joi.number().integer().min(1).required(),
-//   productId: Joi.when('accessoryId', {
-//     is: Joi.exist(),
-//     then: Joi.forbidden(),
-//     otherwise: Joi.number().integer().min(1).required(),
-//   }),
-//   categoryId: Joi.number().integer().min(1).optional(),
-//   accessoryId: Joi.when('productId', {
-//     is: Joi.exist(),
-//     then: Joi.forbidden(),
-//     otherwise: Joi.number().integer().min(1).required(),
-//   }),
-//   cylinderSizeId: Joi.when('accessoryId', {
-//     is: Joi.exist(),
-//     then: Joi.forbidden(),
-//     otherwise: Joi.number().integer().min(1).required(),
-//   }),
-//   orderType: Joi.number().integer().min(1).max(2).required(),
-//   vendorId: Joi.string().uuid({ version: 'uuidv4' }).required(),
-// }
 export const createCart = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user,

@@ -21,7 +21,7 @@ export const handleError = (handler: RequestHandler): RequestHandler => async (r
      * returns void and can not chain catch method. So to make
      * function throw error in async manaer we are awaiting function
      */
-    await handler(req, res, next);
+    handler(req, res, next);
   } catch (err) {
     const { method, originalUrl, body, params, query, user } = req;
     if (!slientAPIs.includes(originalUrl)) {

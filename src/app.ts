@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(multer().array('test'));
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: '*' || config.WHITELIST_ORIGINS, credentials: true }));
+app.use(cors({ origin: config.WHITELIST_ORIGINS, credentials: true }));
 app.use(compression());
 
 // TODO: Only apply to long request
