@@ -13,7 +13,7 @@ const typeormConfig = {
   password: config.POSTGRES_PASSWORD,
   database: config.POSTGRES_DB,
   synchronize: false, // TODO: Make true on development
-  logging: ['error'],
+  logging: true, // TODO: Make logging: ['error'] on production
   dropSchema: config.isTest,
   namingStrategy: new SnakeNamingStrategy(),
   migrationsTableName: 'seed',

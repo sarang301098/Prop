@@ -3,7 +3,7 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 import config from '../config';
 
-const baseFolder = config.isProduction ? 'dist' : 'src';
+const baseFolder = config.isProd ? 'dist' : 'src';
 
 const typeormConfig = {
   type: config.MYSQL_CONNECTION,

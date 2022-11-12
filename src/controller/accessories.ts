@@ -28,13 +28,6 @@ export const getAccessoriesValidation = {
     isFilters: Joi.boolean().default(true),
   }),
 };
-/**
- * Title: Accessory List API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Manage searchObject according to the request params.
- *    2) fetch list and send it as a reponse.
- */
 export const getAll = () => async (req: Request, res: Response): Promise<void> => {
   const {
     query: { search, page, perPage, isFilters },
@@ -73,14 +66,6 @@ export const createAccessoryValidation = {
     description: Joi.string().min(1),
   }),
 };
-/**
- * Title: Create Accessory API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Check if the accessory is available or not .
- *    2) If it isn't create new and then save it in the Database.
- *    3) Send response that created accessory with status code 201.
- */
 export const createAccessory = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user,
@@ -119,15 +104,6 @@ export const updateAccessoryValidation = {
     description: Joi.string().min(1),
   }),
 };
-/**
- * Title: Update Accessory API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Retrive all request/updated accessory data.
- *    2) Then check that accessory is available or not.
- *    3) If it is then check that request data is valid and make update object of valid data.
- *    4) If all updated successfully then send update status 204 as a response.
- */
 export const updateAccessory = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user,
@@ -157,13 +133,6 @@ export const updateAccessory = () => async (req: Request, res: Response): Promis
 export const deleteAccessoryValidation = {
   params: Joi.object({ id: Joi.number().required() }),
 };
-/**
- * Title: Delete Accessory API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Soft delete accessory of given id with Transactions.
- *    2) If all updated successfully then send delete status 204 as a response.
- */
 export const removeAccessory = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user: { id: userId },

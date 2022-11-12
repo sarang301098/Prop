@@ -6,29 +6,9 @@
   "auditLog": "logs/log_audit.json",
   "files": [
     {
-      "date": 1667241821669,
-      "name": "logs/NODE-DEMO-2022-10-31.log",
-      "hash": "49e9c3655ac72ba36c0656f8fb764b4c"
-    },
-    {
-      "date": 1667244442994,
-      "name": "logs/PROPANE-BROS-2022-10-31.log",
-      "hash": "80b24afd9a30abec81ec544337f5694d"
-    },
-    {
-      "date": 1667339824293,
-      "name": "logs/PROPANE-BROS-2022-11-01.log",
-      "hash": "7c619e0baf8d51ab2b8e19115640b92f"
-    },
-    {
-      "date": 1667366430612,
-      "name": "logs/PROPANE-BROS-2022-11-02.log",
-      "hash": "2729bc627a30694fda445ca474c5970b"
-    },
-    {
-      "date": 1667502345063,
-      "name": "logs/PROPANE-BROS-2022-11-03.log",
-      "hash": "a038b362a5767d2df9b7c30ae16482bf"
+      "date": 1668114511723,
+      "name": "logs/PROPANE-BROS-2022-11-10.log",
+      "hash": "fc1abcb3a3f4c8b612a663e9503ec66b"
     }
   ]
 }
