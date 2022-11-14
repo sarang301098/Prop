@@ -24,9 +24,7 @@ export class RedisService {
   }
 
   getInstance = (): Redis => this.redis;
-
   getPublisher = (): Redis => this.publisher;
-
   getSubscriber = (): Redis => this.subscriber;
 
   publish = async (channel: string, message: string): Promise<number> => {

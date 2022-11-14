@@ -8,12 +8,11 @@ export interface SmsBody {
   body?: string;
 }
 
-const accountSid = config.TWILIO_ACCOUNT_SID;
-const authToken = config.TWILIO_AUTH_TOKEN;
-const phoneNumber = config.TWILIO_PHONE_NUMBER;
-
 export class SmsService {
   private static instance: SmsService;
+  private static accountSid = config.TWILIO_ACCOUNT_SID;
+  private static authToken = config.TWILIO_AUTH_TOKEN;
+  private static phoneNumber = config.TWILIO_PHONE_NUMBER;
 
   constructor() {
     if (SmsService.instance instanceof SmsService) {
@@ -23,18 +22,21 @@ export class SmsService {
   }
 
   private createClient(to: string, body?: string, mediaUrl?: Array<string>) {
-    const smsClient = {
-      from: `${phoneNumber}`,
+    return {
       to,
       body,
       mediaUrl,
+      from: `${SmsService.phoneNumber}`,
     };
-
-    return smsClient;
   }
 
   async send({ to, body, mediaUrl }: SmsBody): Promise<unknown> {
-    const client = twilio(accountSid, authToken);
+    if (!SmsService.accountSid || !SmsService.authToken) {
+      logger.error(`Authentication is not availble.`);
+      throw new Error(`Authentication is not availble `);
+    }
+
+    const client = twilio(SmsService.accountSid, SmsService.authToken);
     const smsClient = this.createClient(to, body, mediaUrl);
 
     if (!client && !smsClient) {
