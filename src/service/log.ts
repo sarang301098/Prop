@@ -4,13 +4,13 @@ import { createLogger, format, transports } from 'winston';
 import config from '../config';
 
 export enum LogLevel {
-  ERROR = 'error',
-  WARN = 'warn',
   INFO = 'info',
   HTTP = 'http',
-  VERBOSE = 'verbose',
+  WARN = 'warn',
   DEBUG = 'debug',
+  ERROR = 'error',
   SILLY = 'silly',
+  VERBOSE = 'verbose',
 }
 
 const logFormat = format.printf(({ level, message, timestamp, service, stack }) => {

@@ -1,10 +1,12 @@
 import { getCustomRepository, getManager } from 'typeorm';
+import * as momentTimeZone from 'moment-timezone';
+
 import { OrderStatus } from '../constants';
 import { DriverDetails } from '../model/DriverDetails';
 import { OrderDetails } from '../model/OrderDetails';
 import { VendorDetails } from '../model/VendorDetails';
 import { OrderDetailsRepository } from '../repository/OrdersDetail';
-import * as momentTimeZone from 'moment-timezone';
+
 import logger from './log';
 
 export class DriverAssignment {
@@ -54,8 +56,8 @@ export class DriverAssignment {
           }
         }
       }
-    } catch (e) {
-      logger.error('Error in driver assignment', e);
+    } catch (error) {
+      logger.error('Error in driver assignment', error);
     }
   }
 
