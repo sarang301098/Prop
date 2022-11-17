@@ -22,7 +22,6 @@ export const getAll = () => async (req: Request, res: Response): Promise<void> =
 
   let where: FindConditions<Categories> = {};
 
-  // TODO: working but type error.
   if (orderType) {
     where = { ...where, orderType: Number(orderType) || 2 };
   }

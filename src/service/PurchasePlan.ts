@@ -47,7 +47,7 @@ class PurchasePlanService {
     const params: Stripe.PaymentIntentCreateParams = {
       payment_method_types: ['card'],
       amount: request?.amount * 100,
-      currency: 'usd', // TODO: update as a usd.
+      currency: 'usd',
       customer: request?.stripeCustomerId,
       payment_method: request?.stripeCardId,
       confirm: request?.confirm,

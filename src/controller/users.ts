@@ -37,13 +37,6 @@ export const getUsersValidation = {
       .default('createdAt'),
   }),
 };
-/**
- * Title: Get All Users API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Create find condition for the users also including the pagination setups.
- *    2) Find the users and send it as a response.
- */
 export const getAll = () => async (req: Request, res: Response): Promise<void> => {
   const {
     query: { search, userType, email, page, perPage, sort, sortBy },
@@ -114,13 +107,6 @@ export const createUserValidation = {
       .required(),
   }),
 };
-/**
- * Title: Create User API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Create users data and store it in the database by the save method.
- *    2) Set that data as a response.
- */
 export const createUser = () => async (req: Request, res: Response): Promise<void> => {
   const {
     body: { fullName, email, password, userType },
@@ -171,15 +157,6 @@ export const changePasswordValidation = {
     newPassword: Joi.string().min(6).max(128).required(),
   }),
 };
-/**
- * Title: Change Password API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Get user data by the user.id which we receive from the access_token select only id and password.
- *    2) Check password is available or not and if it is then compare it with old password.
- *    3) If it's all matched then create new hashed password nad store it in the database.
- *    4) set message as a response.
- */
 export const changePassword = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user,
@@ -223,16 +200,6 @@ export const changeMobileNumberValidation = {
     countryCode: Joi.string().required(),
   }),
 };
-/**
- * Title: Change Mobile API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Find user data based on the mobile and country_code.
- *    2) If user available then throw an error that user is already availale with the same obile and country_code.
- *    3) Then, Find verification of that user or Create verification if not.
- *    4) After that update mobile and country_code in the users table.
- *    5) Send Sms and set verification message as a response.
- */
 export const changeMobileNumber = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user,
@@ -281,13 +248,6 @@ export const changeMobileNumber = () => async (req: Request, res: Response): Pro
 export const getUserValidation = {
   params: Joi.object({ id: Joi.string().uuid({ version: 'uuidv4' }).required() }),
 };
-/**
- * Title: Get User by Id API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Find user data based on the Id from the params with all relations.
- *    2) Remove password from the user data.
- */
 export const getById = () => async (req: Request, res: Response): Promise<void> => {
   const {
     params: { id },
@@ -329,16 +289,6 @@ export const updateUserValidation = {
     adminAddress: Joi.string().optional(),
   }),
 };
-/**
- * Title: Update Profile API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Find user data based on the params id with all available relations.
- *    2) Check email and countrycode or mobile Number is same as old user data if it isn't then manage verifications accordingly.
- *    3) Update basic user data in the users table.
- *    4) Now based on the userType update the data.
- *    5) Send 204 status code as a response.
- */
 export const updateProfile = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user: { userType },
@@ -447,16 +397,6 @@ export const verifyOtpValidation = {
     mobileNumber: Joi.string().required(),
   }),
 };
-/**
- * Title: Verify Otp API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Get the verification Details from the mobile, country_code and usertype.
- *    2) Filter that verification based on the type equals 2 (this is the otp verification type check verification model).
- *    3) Check if verification is available or not.
- *    4) Check if otp is matched or not if it isn't then throw an error accordingly.
- *    5) Set a status of 204 as a response.
- */
 export const verifyOtp = () => async (req: Request, res: Response): Promise<void> => {
   const {
     body: { otp, countryCode, mobileNumber, userType, type },
@@ -510,15 +450,6 @@ export const verifyEmailValidation = {
     token: Joi.string().required(),
   }),
 };
-/**
- * Title: Verify Email API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Get the verification Details from the token.
- *    2) Check if verification is available or not.
- *    3) If verification found then update verified is equal "true".
- *    4) Set a status of 200 as a response.
- */
 export const verifyEmail = () => async (req: Request, res: Response): Promise<void> => {
   const {
     body: { token },
@@ -537,10 +468,6 @@ export const verifyEmail = () => async (req: Request, res: Response): Promise<vo
 
   res.sendStatus(200);
 };
-/**
- * Title: Get Profile By Token;
- * Created By: Sarang Patel;
- */
 export const profile = () => async (req: Request, res: Response): Promise<void> => {
   const {
     user: { id },
@@ -565,13 +492,6 @@ export const forgetPasswordValidation = {
     email: Joi.string().lowercase().max(255).email().optional(),
   }),
 };
-/**
- * Title: Forget Password API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Call Service of the ForgetPassword.
- *    Note: For the Detail Code of Service go to excecute method.
- */
 export const forgetPassword = () => async (req: Request, res: Response): Promise<void> => {
   const service = new ForgetPasswordService();
   const result = await service.execute(req.body);
@@ -590,13 +510,6 @@ export const updatePasswordValidation = {
       .required(),
   }),
 };
-/**
- * Title: Verify Email API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Call Service of the UpdatePassword.
- *    Note: For the Detail Code of Service go to excecute method.
- */
 export const updatePassword = () => async (req: Request, res: Response): Promise<void> => {
   const service = new UpdatePasswordService();
   const result = await service.execute(req.body);
@@ -610,14 +523,6 @@ export const resetPasswordValidation = {
     password: Joi.string().min(6).max(128).required(), // TODO: May be 64
   }),
 };
-/**
- * Title: Reset Password API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Based on the Id find user data.
- *    2) Set the updated password(After converting it to Hashed) and save it to the users table.
- *    3) Set the response 200.
- */
 export const resetPassword = () => async (req: Request, res: Response): Promise<void> => {
   const {
     params: { id },
@@ -639,13 +544,6 @@ export const changeProfileStatusValidation = {
     status: Joi.boolean().required(),
   }),
 };
-/**
- * Title: Change Password API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Update status based on the userType for all users.
- *    2) Set the response 204.
- */
 export const changeProfileStatus = () => async (req: Request, res: Response): Promise<void> => {
   const {
     body: { userId, status },
@@ -693,13 +591,6 @@ export const changeUserStatusValidation = {
     status: Joi.number().default(1),
   }),
 };
-/**
- * Title: Change Password API;
- * Created By: Sarang Patel;
- * steps:
- *    1) Update status based on the userType for all users.
- *    2) Set the response 204.
- */
 export const changeUserStatus = () => async (req: Request, res: Response): Promise<void> => {
   const {
     body: { userId, userType, status },

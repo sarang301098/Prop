@@ -47,7 +47,7 @@ class StripeOrderPaymentService {
     const params: Stripe.PaymentIntentCreateParams = {
       payment_method_types: ['card'],
       amount: request?.amount ? request?.amount * 100 : 0,
-      currency: 'usd', // TODO: update as a usd.
+      currency: 'usd',
       customer: request?.stripeCustomerId,
       payment_method: request?.stripeCardId,
       confirm: request?.confirm,
@@ -66,7 +66,7 @@ class StripeOrderPaymentService {
     return paymentIntent;
   }
 
-  public refundPayment(
+  public async refundPayment(
     paymentIntentId: string,
     amount: number,
   ): Promise<Stripe.Response<Stripe.Refund>> {

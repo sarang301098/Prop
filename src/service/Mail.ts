@@ -168,11 +168,11 @@ export class MailService {
       .replace(new RegExp('{{promocodeDiscount}}', 'g'), promocodeDiscount || '');
 
     return transport.sendMail({
-      from: `Propane <${config.GMAIL_USER}>`,
       to,
-      subject,
       text,
       html,
+      subject,
+      from: `Propane <${config.GMAIL_USER}>`,
     });
   }
 }
