@@ -1,0 +1,52 @@
+[2022-11-20T15:58:43.400Z][backend][error] Unable to connect to database.  Authentication failed. 
+ MongoError: Authentication failed.
+    at MessageStream.messageHandler (/Users/sarang_3010/Documents/propane/node_modules/mongodb/lib/cmap/connection.js:272:20)
+    at MessageStream.emit (events.js:400:28)
+    at MessageStream.emit (domain.js:475:12)
+    at processIncomingData (/Users/sarang_3010/Documents/propane/node_modules/mongodb/lib/cmap/message_stream.js:144:12)
+    at MessageStream._write (/Users/sarang_3010/Documents/propane/node_modules/mongodb/lib/cmap/message_stream.js:42:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at Socket.ondata (internal/streams/readable.js:731:22)
+    at Socket.emit (events.js:400:28)
+    at Socket.emit (domain.js:475:12)
+[2022-11-20T15:59:39.508Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:01:48.373Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:06:32.251Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:06:46.502Z][backend][info] Gracefully shutting down
+[2022-11-20T16:07:31.604Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:07:32.301Z][backend][info] Gracefully shutting down
+[2022-11-20T16:07:40.279Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:08:37.473Z][backend][error] Unable to connect to database.  Error in specification { name: "IDX_3fa17e24f0d514eec36871ac1a", key: {}, unique: false, sparse: false, background: false } :: caused by :: Index keys cannot be empty. 
+ MongoError: Error in specification { name: "IDX_3fa17e24f0d514eec36871ac1a", key: {}, unique: false, sparse: false, background: false } :: caused by :: Index keys cannot be empty.
+    at MessageStream.messageHandler (/Users/sarang_3010/Documents/propane/node_modules/mongodb/lib/cmap/connection.js:272:20)
+    at MessageStream.emit (events.js:400:28)
+    at MessageStream.emit (domain.js:475:12)
+    at processIncomingData (/Users/sarang_3010/Documents/propane/node_modules/mongodb/lib/cmap/message_stream.js:144:12)
+    at MessageStream._write (/Users/sarang_3010/Documents/propane/node_modules/mongodb/lib/cmap/message_stream.js:42:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at Socket.ondata (internal/streams/readable.js:731:22)
+    at Socket.emit (events.js:400:28)
+    at Socket.emit (domain.js:475:12)
+[2022-11-20T16:09:45.773Z][backend][error] Unable to connect to database.  Error in specification { name: "IDX_f110560a23d3cd9ece6d641315", key: {}, unique: false, sparse: false, background: false } :: caused by :: Index keys cannot be empty. 
+ MongoError: Error in specification { name: "IDX_f110560a23d3cd9ece6d641315", key: {}, unique: false, sparse: false, background: false } :: caused by :: Index keys cannot be empty.
+    at MessageStream.messageHandler (/Users/sarang_3010/Documents/propane/node_modules/mongodb/lib/cmap/connection.js:272:20)
+    at MessageStream.emit (events.js:400:28)
+    at MessageStream.emit (domain.js:475:12)
+    at processIncomingData (/Users/sarang_3010/Documents/propane/node_modules/mongodb/lib/cmap/message_stream.js:144:12)
+    at MessageStream._write (/Users/sarang_3010/Documents/propane/node_modules/mongodb/lib/cmap/message_stream.js:42:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at Socket.ondata (internal/streams/readable.js:731:22)
+    at Socket.emit (events.js:400:28)
+    at Socket.emit (domain.js:475:12)
+[2022-11-20T16:10:01.369Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:10:37.926Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:11:11.459Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:16:34.898Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:18:40.567Z][backend][info] Gracefully shutting down
+[2022-11-20T16:18:49.287Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:24:04.586Z][backend][info] Gracefully shutting down
+[2022-11-20T16:24:12.917Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:24:44.346Z][backend][info] Gracefully shutting down
