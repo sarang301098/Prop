@@ -50,3 +50,92 @@
 [2022-11-20T16:24:04.586Z][backend][info] Gracefully shutting down
 [2022-11-20T16:24:12.917Z][backend][info] Server started - PORT: 3333
 [2022-11-20T16:24:44.346Z][backend][info] Gracefully shutting down
+[2022-11-20T16:51:39.138Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:51:49.917Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:52:41.778Z][backend][info] Server started - PORT: 3333
+[2022-11-20T16:53:49.842Z][backend][info] Gracefully shutting down
+[2022-11-20T16:53:58.062Z][backend][info] Server started - PORT: 3333
+[2022-11-21T01:45:25.981Z][backend][info] Gracefully shutting down
+[2022-11-21T04:44:36.939Z][backend][error] Data type "double" in "ProductsDetails.indexPrice" is not supported by "postgres" database. 
+ DataTypeNotSupportedError: Data type "double" in "ProductsDetails.indexPrice" is not supported by "postgres" database.
+    at DataTypeNotSupportedError.TypeORMError [as constructor] (/Users/sarang_3010/Documents/propane/src/error/TypeORMError.ts:7:9)
+    at new DataTypeNotSupportedError (/Users/sarang_3010/Documents/propane/src/error/DataTypeNotSupportedError.ts:8:9)
+    at /Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:88:27
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validate (/Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:85:36)
+    at /Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:46:56
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validateMany (/Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:46:25)
+    at Connection.buildMetadatas (/Users/sarang_3010/Documents/propane/src/connection/Connection.ts:518:33)
+    at Connection.<anonymous> (/Users/sarang_3010/Documents/propane/src/connection/Connection.ts:186:18)
+[2022-11-21T04:46:12.101Z][backend][error] Data type "number" in "ProductsDetails.indexPrice" is not supported by "postgres" database. 
+ DataTypeNotSupportedError: Data type "number" in "ProductsDetails.indexPrice" is not supported by "postgres" database.
+    at DataTypeNotSupportedError.TypeORMError [as constructor] (/Users/sarang_3010/Documents/propane/src/error/TypeORMError.ts:7:9)
+    at new DataTypeNotSupportedError (/Users/sarang_3010/Documents/propane/src/error/DataTypeNotSupportedError.ts:8:9)
+    at /Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:88:27
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validate (/Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:85:36)
+    at /Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:46:56
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validateMany (/Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:46:25)
+    at Connection.buildMetadatas (/Users/sarang_3010/Documents/propane/src/connection/Connection.ts:518:33)
+    at Connection.<anonymous> (/Users/sarang_3010/Documents/propane/src/connection/Connection.ts:186:18)
+[2022-11-21T04:46:36.335Z][backend][error] Data type "number" in "ProductsDetails.indexPrice" is not supported by "postgres" database. 
+ DataTypeNotSupportedError: Data type "number" in "ProductsDetails.indexPrice" is not supported by "postgres" database.
+    at DataTypeNotSupportedError.TypeORMError [as constructor] (/Users/sarang_3010/Documents/propane/src/error/TypeORMError.ts:7:9)
+    at new DataTypeNotSupportedError (/Users/sarang_3010/Documents/propane/src/error/DataTypeNotSupportedError.ts:8:9)
+    at /Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:88:27
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validate (/Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:85:36)
+    at /Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:46:56
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validateMany (/Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:46:25)
+    at Connection.buildMetadatas (/Users/sarang_3010/Documents/propane/src/connection/Connection.ts:518:33)
+    at Connection.<anonymous> (/Users/sarang_3010/Documents/propane/src/connection/Connection.ts:186:18)
+[2022-11-21T04:47:04.946Z][backend][error] Data type "number" in "ProductsDetails.indexPrice" is not supported by "postgres" database. 
+ DataTypeNotSupportedError: Data type "number" in "ProductsDetails.indexPrice" is not supported by "postgres" database.
+    at DataTypeNotSupportedError.TypeORMError [as constructor] (/Users/sarang_3010/Documents/propane/src/error/TypeORMError.ts:7:9)
+    at new DataTypeNotSupportedError (/Users/sarang_3010/Documents/propane/src/error/DataTypeNotSupportedError.ts:8:9)
+    at /Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:88:27
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validate (/Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:85:36)
+    at /Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:46:56
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validateMany (/Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:46:25)
+    at Connection.buildMetadatas (/Users/sarang_3010/Documents/propane/src/connection/Connection.ts:518:33)
+    at Connection.<anonymous> (/Users/sarang_3010/Documents/propane/src/connection/Connection.ts:186:18)
+[2022-11-21T04:47:56.874Z][backend][error] Data type "number" in "ProductsDetails.indexPrice" is not supported by "mysql" database. 
+ DataTypeNotSupportedError: Data type "number" in "ProductsDetails.indexPrice" is not supported by "mysql" database.
+    at DataTypeNotSupportedError.TypeORMError [as constructor] (/Users/sarang_3010/Documents/propane/src/error/TypeORMError.ts:7:9)
+    at new DataTypeNotSupportedError (/Users/sarang_3010/Documents/propane/src/error/DataTypeNotSupportedError.ts:8:9)
+    at /Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:88:27
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validate (/Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:85:36)
+    at /Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:46:56
+    at Array.forEach (<anonymous>)
+    at EntityMetadataValidator.validateMany (/Users/sarang_3010/Documents/propane/src/metadata-builder/EntityMetadataValidator.ts:46:25)
+    at Connection.buildMetadatas (/Users/sarang_3010/Documents/propane/src/connection/Connection.ts:518:33)
+    at Connection.<anonymous> (/Users/sarang_3010/Documents/propane/src/connection/Connection.ts:186:18)
+[2022-11-21T04:48:28.155Z][backend][info] Server started - PORT: 3333
+[2022-11-21T04:49:27.837Z][backend][info] Server started - PORT: 3333
+[2022-11-21T04:50:34.306Z][backend][info] Server started - PORT: 3333
+[2022-11-21T04:51:04.859Z][backend][info] Server started - PORT: 3333
+[2022-11-21T04:51:22.573Z][backend][info] Server started - PORT: 3333
+[2022-11-21T04:51:46.045Z][backend][info] Server started - PORT: 3333
+[2022-11-21T04:54:50.285Z][backend][info] Server started - PORT: 3333
+[2022-11-21T04:55:19.972Z][backend][error] Unable to connect to database.  role "root" does not exist 
+ error: role "root" does not exist
+    at Parser.parseErrorMessage (/Users/sarang_3010/Documents/propane/node_modules/pg-protocol/src/parser.ts:369:69)
+    at Parser.handlePacket (/Users/sarang_3010/Documents/propane/node_modules/pg-protocol/src/parser.ts:188:21)
+    at Parser.parse (/Users/sarang_3010/Documents/propane/node_modules/pg-protocol/src/parser.ts:103:30)
+    at Socket.<anonymous> (/Users/sarang_3010/Documents/propane/node_modules/pg-protocol/src/index.ts:7:48)
+    at Socket.emit (events.js:400:28)
+    at Socket.emit (domain.js:475:12)
+    at addChunk (internal/streams/readable.js:293:12)
+    at readableAddChunk (internal/streams/readable.js:267:9)
+    at Socket.Readable.push (internal/streams/readable.js:206:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:188:23)
+[2022-11-21T04:56:01.003Z][backend][info] Server started - PORT: 3333
+[2022-11-21T04:57:52.923Z][backend][info] Server started - PORT: 3333
+[2022-11-21T04:58:17.262Z][backend][info] Gracefully shutting down
+[2022-11-21T04:58:17.268Z][backend][info] Gracefully shutting down

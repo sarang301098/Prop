@@ -1,45 +1,67 @@
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
-  DeleteDateColumn,
-  BaseEntity,
-} from 'typeorm';
+import { Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('tes', { schema: 'public' })
-export class Tes extends BaseEntity {
-  @PrimaryGeneratedColumn('increment')
-  id!: number;
+@Entity('users', { database: 'mongodb' })
+export class Users {
+  @ObjectIdColumn()
+  _id!: ObjectID;
 
-  @Column('varchar', { length: 255 })
-  name!: string;
+  @Column()
+  id!: string;
 
-  @Column('varchar', { length: 255 })
-  image!: string;
+  @Column()
+  email!: string | null;
 
-  @Column('integer', { nullable: true })
-  price!: number;
+  @Column()
+  username!: string | null;
 
-  @Column('varchar', { nullable: true })
-  description!: string | null;
+  @Column()
+  password!: string | null;
 
-  @Column('integer', { nullable: true, default: () => '1' }) // 0 = notApproved, 1 = approved, 2 = pending
-  status!: number | null;
+  @Column()
+  authToken!: string | null;
 
-  @CreateDateColumn({ type: 'timestamp' })
-  createdAt!: Date | null;
+  @Column()
+  resetPasswordToken!: string | null;
 
-  @UpdateDateColumn({ type: 'timestamp' })
-  updatedAt!: Date | null;
+  @Column()
+  type!: string | null;
 
-  @DeleteDateColumn({ type: 'timestamp' })
-  deletedAt!: Date | null;
+  @Column()
+  lastLogin!: Date | null;
 
-  @Column('varchar', { nullable: true })
-  createdBy!: string | null;
+  @Column()
+  avatar!: string | null;
 
-  @Column('varchar', { nullable: true })
-  updatedBy!: string | null;
+  @Column('simple-json')
+  address!: {
+    area: string;
+    city: string;
+    state: string;
+    pincode: number;
+  };
+
+  @Column('simple-json')
+  general!: {
+    fName: string;
+    mName: string;
+    lName: string;
+    gender: string | boolean;
+    dob: Date;
+  };
+
+  @Column('simple-json')
+  contact!: {
+    workEmail: string;
+    personalEmail: string;
+    workPhone: number;
+    personalPhone: number;
+    residencePhone: number;
+    skypeId: string;
+  };
+
+  @Column()
+  employeeNo!: string | number | null;
+
+  @Column('simple-array')
+  assignedInventory!: Array<{ inventoryName: string; inventoryDetailId: string }>;
 }
