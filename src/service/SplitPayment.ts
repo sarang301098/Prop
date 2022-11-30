@@ -5,7 +5,6 @@ const stripe = new Stripe(config.STRIPE_SECRET_KEY, { apiVersion: '2020-08-27' }
 
 export interface SplitPayment {
   amount: number;
-
   destination: string;
 }
 
@@ -25,9 +24,7 @@ export class StripeSplitPayment {
 
     return stripe.transfers.create({
       amount: amount * 100,
-
       currency: 'usd',
-
       destination: destination,
     });
   }

@@ -6,19 +6,14 @@
   "auditLog": "logs/log_audit.json",
   "files": [
     {
-      "date": 1668804954410,
-      "name": "logs/PROPANE-BROS-2022-11-18.log",
-      "hash": "6e69ab9f7fa55ac17abb511a2b9e652d"
-    },
-    {
-      "date": 1668959916871,
-      "name": "logs/PROPANE-BROS-2022-11-20.log",
-      "hash": "f6dcbb7d500d2f8e1c18caeebeb07f07"
-    },
-    {
       "date": 1669330197710,
       "name": "logs/PROPANE-BROS-2022-11-24.log",
       "hash": "9990796a307cb6bd583784aa7ebcb90b"
+    },
+    {
+      "date": 1669836010954,
+      "name": "logs/PROPANE-BROS-2022-11-30.log",
+      "hash": "3d78149ba1ce6dff93626b1c7594883d"
     }
   ]
 }

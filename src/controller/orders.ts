@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { Request, Response } from 'express';
 import { Joi } from 'express-validation';
-import { compact, omit, sumBy, uniq, get, countBy, flatMap } from 'lodash';
+import { compact, omit, sumBy, uniq, get } from 'lodash';
 
 import logger from '../service/log';
 import GetCart from '../service/GetCart';
@@ -244,7 +244,6 @@ export const getUsersOrder = () => async (req: Request, res: Response): Promise<
   }
 
   const [orders, count] = await query.getManyAndCount();
-
   res.status(200).json({ orders, count });
 };
 
@@ -404,16 +403,6 @@ export const getOrderById = () => async (req: Request, res: Response): Promise<v
     }
 
     drivers = await getAlldriversQuery.getMany();
-
-    if (drivers && drivers.length) {
-      drivers = drivers.map((driver) => {
-        return {
-          ...driver,
-          orders: countBy(flatMap(driver?.driverOrders), 'orderType'),
-          driverOrders: undefined,
-        };
-      });
-    }
   }
 
   res.status(200).json({ order, drivers });
@@ -441,7 +430,7 @@ export const createOrder = () => async (req: Request, res: Response): Promise<vo
   const userOrderStatsRepo = getRepository(UserOrderStatistics);
 
   const cartService = new GetCart();
-  const data = await cartService.execute({
+  const cartDetails = await cartService.execute({
     userId: user?.id,
     isOrder: true,
     promocodeId,
@@ -449,7 +438,7 @@ export const createOrder = () => async (req: Request, res: Response): Promise<vo
     checkForleakage,
   });
 
-  let { orderDetails } = data;
+  let { orderDetails } = cartDetails;
 
   if (!(orderDetails && orderDetails.length)) {
     throw new BadRequestError('Cart is empty', 'EMPTY_CART');
@@ -488,7 +477,7 @@ export const createOrder = () => async (req: Request, res: Response): Promise<vo
 
   // TODO: manage relations
   try {
-    orderDetails = orderDetails.map((details) =>
+    orderDetails = (orderDetails || []).map((details) =>
       omit(Object.assign({}, { ...details, order, status: OrderStatus.PENDING }), ['id']),
     );
 
@@ -578,7 +567,7 @@ export const createOrder = () => async (req: Request, res: Response): Promise<vo
     });
     notification = await notificationRepo.save(notification);
 
-    if (tokens && tokens.length) {
+    if (tokens && tokens?.length) {
       try {
         const notificationService = new SendPushNotificationService();
         await notificationService.execute({
@@ -607,7 +596,7 @@ export const createOrder = () => async (req: Request, res: Response): Promise<vo
       userId: user?.id,
       email: user?.email,
       orderId: order?.id,
-      amount: Math.ceil(data.grandTotal ? data.grandTotal : 0),
+      amount: Math.ceil(cartDetails.grandTotal ? cartDetails.grandTotal : 0),
       stripeCustomerId: user?.stripeCustomerId,
     });
     const stripeSplitPaymentService = new StripeSplitPayment();
@@ -622,9 +611,9 @@ export const createOrder = () => async (req: Request, res: Response): Promise<vo
       });
     }
     await ordersRepo.update(order?.id, {
-      serviceFee: data.serviceFee,
-      serviceCharge: data.serviceCharge,
-      grandTotal: data.grandTotal,
+      serviceFee: cartDetails.serviceFee,
+      serviceCharge: cartDetails.serviceCharge,
+      grandTotal: cartDetails.grandTotal,
       stripePaymentIntentId: payment.PaymentIntent.id,
     });
   } catch (error) {
@@ -653,13 +642,13 @@ export const createOrder = () => async (req: Request, res: Response): Promise<vo
       orderId: order?.id.toString(),
       address: order?.address,
       qty: orderQty.toString(),
-      deliverFee: data?.deliveryFee.toString(),
-      salesTax: data?.salesTaxAmount.toString(),
-      serviceFee: data?.serviceFee.toString(),
-      serviceCharge: data?.serviceCharge.toString(),
+      deliverFee: cartDetails?.deliveryFee.toString(),
+      salesTax: cartDetails?.salesTaxAmount.toString(),
+      serviceFee: cartDetails?.serviceFee.toString(),
+      serviceCharge: cartDetails?.serviceCharge.toString(),
       promocode: promocode.toString() || '0',
-      promocodeDiscount: data?.promocodeDiscount.toString(),
-      total: data?.grandTotal.toString(),
+      promocodeDiscount: cartDetails?.promocodeDiscount.toString(),
+      total: cartDetails?.grandTotal.toString(),
     };
     await mailService.send(mailBody);
   } catch (error) {
@@ -672,7 +661,7 @@ export const createOrder = () => async (req: Request, res: Response): Promise<vo
     await userOrderStatsRepo.update({ user: key }, { noOfOrders: () => `noOfOrders + ${value}` });
   }
   await getManager().getRepository(Users).update(user?.id, { lastPurchaseDate: new Date() });
-  res.status(201).json({ data: { ...data, orderId: order.id } });
+  res.status(201).json({ cartDetails: { ...cartDetails, orderId: order.id } });
 };
 
 export const updateOrderValidation = {
@@ -776,6 +765,7 @@ export const removeOrders = () => async (req: Request, res: Response): Promise<v
   if (paymentIntent.amount_received <= 0) {
     throw new Error('Payment is not completed.');
   }
+
   await stripeSplitPaymentService.splitPaymentRefund(order?.stripePaymentTransferId);
   await service.refundPayment(order?.stripePaymentIntentId, order?.refundAmount);
 
