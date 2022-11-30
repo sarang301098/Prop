@@ -11,11 +11,6 @@ import { Notification } from '../model/Notification';
 import { BadRequestError } from '../error';
 import { NotificationType, PropaneUserType, NotificationActions } from '../constants';
 
-/**
- * Title: Notification Module API;
- * Created By: Mohammad Hussain Aghariya;
- */
-
 export const getAllValidation = {
   query: Joi.object({
     search: Joi.string().optional(),
@@ -240,8 +235,8 @@ export const clearAllNotification = () => async (req: Request, res: Response): P
     });
 
   const [userNotifications, count] = await query.getManyAndCount();
-
   const notificationRepo = getRepository(Notification);
+
   if (userNotifications && userNotifications.length) {
     for (let index = 0; index < count; index++) {
       userNotifications[index] = Object.assign({}, userNotifications[index], {
@@ -252,8 +247,7 @@ export const clearAllNotification = () => async (req: Request, res: Response): P
     }
   }
 
-  await notificationRepo.save([...userNotifications]);
-
+  await notificationRepo.save(userNotifications);
   res.sendStatus(204);
 };
 
@@ -270,15 +264,17 @@ export const readNotification = () => async (req: Request, res: Response): Promi
   } = req;
 
   const notificationRepo = getRepository(Notification);
-  const notifications = await notificationRepo.find({ where: { id: In(notificationIds) } });
+  const notifications = await notificationRepo.find({ where: { id: In([...notificationIds]) } });
 
   for (let index = 0; index < notifications.length; index++) {
     let readedBy: Array<string | number> = [];
     if (readedOption && readedOption === NotificationActions.READ) {
       readedBy = notifications[index]?.readedBy || [];
-
-      if (readedBy && readedBy.length) readedBy = uniq([...readedBy, user.id]);
-      else readedBy = [user.id];
+      if (readedBy && readedBy.length) {
+        readedBy = uniq([...readedBy, user?.id]);
+      } else {
+        readedBy = [user?.id];
+      }
     } else if (readedOption && readedOption === NotificationActions.UN_READ) {
       readedBy = notifications[index]?.readedBy || [];
 

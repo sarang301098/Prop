@@ -1,8 +1,6 @@
 import { createConnection, Connection } from 'typeorm';
 
 import mySqlTypeormConfig from '../config/mySqlTypeorm';
-// import mongoDbTypeormConfig from '../config/mongoDbTypeorm';
-// import postgerTypeormConfig from '../config/postgreSeedTypeorm';
 
 export default class Database {
   static #instance: Database;
@@ -26,9 +24,6 @@ export default class Database {
   async connect(): Promise<Connection> {
     [this.#connection] = await Promise.all([createConnection(mySqlTypeormConfig)]);
     return this.#connection;
-
-    // [this.#connection] = await Promise.all([createConnection(postgerTypeormConfig)]);
-    // return this.#connection;
   }
 
   async disConnect(): Promise<void> {
