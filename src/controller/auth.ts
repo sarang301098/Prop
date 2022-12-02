@@ -99,13 +99,12 @@ export const signUp = () => async (req: Request, res: Response): Promise<void> =
   user = await userRepository.save(user);
 
   if (user && user.id) {
-    const verificationTypes = [1, 2];
-    verificationTypes.forEach(async (type: number) => {
+    [1, 2].forEach(async (type: number) => {
       const newVerification = userVerificationRepo.create({
         type,
+        user,
         verified: false,
         tokenOrOtp: type === 1 ? emailToken : mobileOtp,
-        user,
       });
       await userVerificationRepo.save(newVerification);
     });
