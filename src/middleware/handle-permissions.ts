@@ -37,18 +37,14 @@ export const handelPermission: RequestHandler = async (request, response, next):
 
   if (!moduleId) return next();
   const permission = find(permissions, (prod) => prod.moduleId === moduleId);
-
   if (!permission) return next(new ForbiddenError(`User does not have a permission`));
 
   if (permission && !permission?.all) {
     let isAllow = true;
     switch (method) {
       case ApiMethods.GET:
-        if (Object.keys(query).length !== 0 && !permission.view) {
-          isAllow = false;
-        } else if (Object.keys(query).length === 0 && !permission.index) {
-          isAllow = false;
-        }
+        if (Object.keys(query).length !== 0 && !permission.view) isAllow = false;
+        else if (Object.keys(query).length === 0 && !permission.index) isAllow = false;
         break;
       case ApiMethods.POST:
         if (!permission.add) isAllow = false;
@@ -67,9 +63,7 @@ export const handelPermission: RequestHandler = async (request, response, next):
         break;
     }
 
-    if (!isAllow) {
-      return next(new ForbiddenError(`User does not have a permission`));
-    }
+    if (!isAllow) return next(new ForbiddenError(`User does not have a permission`));
   }
   return next();
 };

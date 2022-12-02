@@ -22,7 +22,6 @@ export const authenticate: RequestHandler = async (request, response, next): Pro
 
   try {
     const decoded = await verifyToken(token, Token.ACCESS);
-
     if (!isAccessToken(decoded)) {
       throw new BadRequestError('Provided token is not valid access token', 'INVALID_ACCESS_TOKEN');
     }
