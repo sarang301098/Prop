@@ -14,7 +14,7 @@ const typeormConfig = {
   database: config.MYSQL_DB,
   namingStrategy: new SnakeNamingStrategy(),
   logging: true, // TODO: Make logging: ['error'] on production
-  // synchronize: true, // TODO: Make true on development
+  synchronize: true, // TODO: Make true on development
   entities: [`${baseFolder}/model/*{.js,.ts}`, `${baseFolder}/model/views/*{.js,.ts}`],
   migrations: [`${baseFolder}/database/migration/**/*{.js,.ts}`],
   subscribers: [`${baseFolder}/database/subscriber/**/*{.js,.ts}`],
