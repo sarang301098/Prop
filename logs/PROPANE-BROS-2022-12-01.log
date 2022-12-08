@@ -1,0 +1,60 @@
+[2022-12-02T01:16:01.001Z][backend][info] Server started - PORT: 3333
+[2022-12-02T01:16:29.254Z][backend][error] POST /auth/refresh 
+User: {}
+Params: {}
+Query: {}
+Body: {
+  refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njk5NDM3NjMsImV4cCI6MTY3MjUzNTc2MywiYXVkIjoiYWNjZXNzX3Rva2VuIiwic3ViIjoiNzA2ZGQ5MDctM2I5Ni00YWQ3LTg0YTQtZjVhYzkxZWJkNjhjIn0.MGPr8MUOLzeUHcvREy6nKQgwcmhmSn-R8BcLx6qEpTI'
+}
+Error: Provided token is not valid refresh token
+[2022-12-02T01:16:33.692Z][backend][error] POST /auth/refresh 
+User: {}
+Params: {}
+Query: {}
+Body: {
+  refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njk5NDM3NjMsImV4cCI6MTY3MjUzNTc2MywiYXVkIjoiYWNjZXNzX3Rva2VuIiwic3ViIjoiNzA2ZGQ5MDctM2I5Ni00YWQ3LTg0YTQtZjVhYzkxZWJkNjhjIn0.MGPr8MUOLzeUHcvREy6nKQgwcmhmSn-R8BcLx6qEpTI'
+}
+Error: Provided token is not valid refresh token
+[2022-12-02T01:16:34.309Z][backend][error] POST /auth/refresh 
+User: {}
+Params: {}
+Query: {}
+Body: {
+  refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njk5NDM3NjMsImV4cCI6MTY3MjUzNTc2MywiYXVkIjoiYWNjZXNzX3Rva2VuIiwic3ViIjoiNzA2ZGQ5MDctM2I5Ni00YWQ3LTg0YTQtZjVhYzkxZWJkNjhjIn0.MGPr8MUOLzeUHcvREy6nKQgwcmhmSn-R8BcLx6qEpTI'
+}
+Error: Provided token is not valid refresh token
+[2022-12-02T01:16:38.353Z][backend][error] POST /auth/refresh 
+User: {}
+Params: {}
+Query: {}
+Body: {
+  refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njk5NDM3NjMsImV4cCI6MTY3MjUzNTc2MywiYXVkIjoiYWNjZXNzX3Rva2VuIiwic3ViIjoiNzA2ZGQ5MDctM2I5Ni00YWQ3LTg0YTQtZjVhYzkxZWJkNjhjIn0.MGPr8MUOLzeUHcvREy6nKQgwcmhmSn-R8BcLx6qEpTI'
+}
+Error: Provided token is not valid refresh token
+[2022-12-02T01:19:02.546Z][backend][error] GET /dashboard/vendor 
+User: {
+  id: '706dd907-3b96-4ad7-84a4-f5ac91ebd68c',
+  email: 'admin@gmail.com'
+}
+Params: {}
+Query: {}
+Body: {}
+QueryFailedError: ER_MIX_OF_GROUP_FUNC_AND_FIELDS: In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'propane.vendorStocks.added_stock_qty'; this is incompatible with sql_mode=only_full_group_by
+[2022-12-02T01:21:48.375Z][backend][error] GET /dashboard/vendor 
+User: {
+  id: '706dd907-3b96-4ad7-84a4-f5ac91ebd68c',
+  email: 'admin@gmail.com'
+}
+Params: {}
+Query: {}
+Body: {}
+QueryFailedError: ER_MIX_OF_GROUP_FUNC_AND_FIELDS: In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'propane.vendorStocks.added_stock_qty'; this is incompatible with sql_mode=only_full_group_by
+[2022-12-02T01:21:49.295Z][backend][error] GET /dashboard/vendor 
+User: {
+  id: '706dd907-3b96-4ad7-84a4-f5ac91ebd68c',
+  email: 'admin@gmail.com'
+}
+Params: {}
+Query: {}
+Body: {}
+QueryFailedError: ER_MIX_OF_GROUP_FUNC_AND_FIELDS: In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'propane.vendorStocks.added_stock_qty'; this is incompatible with sql_mode=only_full_group_by
